@@ -47,7 +47,20 @@ So in summary, always use strict comparison (===) to avoid type juggling:
 Always prefer strict comparisons unless you explicitly want loose comparison behavior which enables **type juggling**.
 
 ### Reference
-- https://laracasts.com/series/laravel-security-through-examples/episodes/10
+- [Laracasts > Laravel Security Through Examples > Type Juggling](https://laracasts.com/series/laravel-security-through-examples/episodes/10) 
 
+2. Using `hash_equals()`
+
+(PHP 5 >= 5.6.0, PHP 7, PHP 8)
+
+hash_equals — Timing attack safe string comparison.
+
+This checks whether two strings are equal without leaking information about the contents of known_string via the execution time. 
+
+This function can be used to mitigate timing attacks. Performing a regular comparison with === will take more or less time to execute depending on whether the two values are different or not and at which position the first difference can be found, thus leaking information about the contents of the secret known_string. 
+
+### References
+- [Laracasts > Laravel Security Through Examples > Type Juggling](https://laracasts.com/series/laravel-security-through-examples/episodes/10)
+- [php.net > hash_equals](https://www.php.net/manual/en/function.hash-equals.php)
 
 
