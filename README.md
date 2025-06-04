@@ -46,5 +46,8 @@ So in summary, always use strict comparison (===) to avoid type juggling:
 
 Always prefer strict comparisons unless you explicitly want loose comparison behavior which enables **type juggling**.
 
+### Reference
+- https://laracasts.com/series/laravel-security-through-examples/episodes/10
+
 
 
