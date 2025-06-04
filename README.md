@@ -49,7 +49,7 @@ Always prefer strict comparisons unless you explicitly want loose comparison beh
 ### Reference
 - [Laracasts > Laravel Security Through Examples > Type Juggling](https://laracasts.com/series/laravel-security-through-examples/episodes/10) 
 
-2. Using `hash_equals()`
+## 2. Using `hash_equals()`
 
 (PHP 5 >= 5.6.0, PHP 7, PHP 8)
 
@@ -58,6 +58,23 @@ hash_equals — Timing attack safe string comparison.
 This checks whether two strings are equal without leaking information about the contents of known_string via the execution time. 
 
 This function can be used to mitigate timing attacks. Performing a regular comparison with === will take more or less time to execute depending on whether the two values are different or not and at which position the first difference can be found, thus leaking information about the contents of the secret known_string. 
+
+Example:
+```
+<?php
+$secretKey = '8uRhAeH89naXfFXKGOEj';
+
+// Value and signature are provided by the user, e.g. within the URL
+// and retrieved using $_GET.
+$value = 'username=rasmuslerdorf';
+$signature = '8c35009d3b50caf7f5d2c1e031842e6b7823a1bb781d33c5237cd27b57b5f327';
+
+if (hash_equals(hash_hmac('sha256', $value, $secretKey), $signature)) {
+    echo "The value is correctly signed.", PHP_EOL;
+} else {
+    echo "The value was tampered with.", PHP_EOL;
+}
+```
 
 ### References
 - [Laracasts > Laravel Security Through Examples > Type Juggling](https://laracasts.com/series/laravel-security-through-examples/episodes/10)
